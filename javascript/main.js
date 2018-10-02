@@ -1,4 +1,5 @@
-import {cardBuilder} from "./components/store.js"
+import {cardBuilder} from "./components/store.js";
+
 
 const initializeApp = () => {
     cardBuilder();

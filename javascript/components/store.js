@@ -1,4 +1,5 @@
 import {printToDom} from "../helpers/util.js"
+// import {addToCart} from "./components/cart.js"
 
 const books = [
     {
@@ -21,21 +22,38 @@ const books = [
     }
 ]
 
+const cartClick = (e) => {
+    const bookClass = e.target.closest('.card').class;
+    const currentBook = books.find(x => x.class === bookClass);
+    console.log (currentBook);
+};
+
+const addToCart = () => {
+    const cartButtons = document.getElementsByClassName('cart');
+    for (let i = 0; i < cartButtons.length; i++){
+    cartButtons[i].addEventListener('click', cartClick)
+}};
+
 
 const cardBuilder = () => {
     let stringBuilder = '';
+    let counter = 0;
     for (let i = 0; i < books.length; i++){
+        counter++;
         stringBuilder += 
-        `<div class="card" style="width: 18rem;">
+        `<div id="book${counter}" class="card" style="width: 18rem;">
             <img class="card-img-top" src="${books[i].image}" alt="${books[i].title}">
                 <div class="card-body">
                     <h5 class="card-title">${books[i].title}</h5>
                     <p class="card-text">${books[i].description}</p>
-                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                    <a href="#" class="cart btn btn-primary">Add To Cart</a>
                 </div>
         </div>`;
     }
     printToDom (stringBuilder, "store");
+    addToCart();
 }
+
+
 
 export {cardBuilder};
