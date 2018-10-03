@@ -1,6 +1,6 @@
 import {printToDom} from "../helpers/util.js";
 
-const cartBuilder = (books) => {
+const cartBuilder = (books) => {   //try passing in an array that uses the push method and pop method that adds and removes books
     let cartString = 
     `<div class="card" style="width: 18rem;">
         <img class="card-img-top" src="${books.image}" alt="${books.title}">

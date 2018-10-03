@@ -26,7 +26,7 @@ const books = [
 ]
 
 const cartClick = (e) => {
-    const bookId = e.target.closest('.book').id;
+    const bookId = e.target.closest('.card').id;
     const currentBook = books.find(x => x.id === bookId);
     cartBuilder(currentBook);
 };
@@ -43,7 +43,7 @@ const cardBuilder = () => {
     let stringBuilder = '';
     for (let i = 0; i < books.length; i++){
         stringBuilder += 
-        `<div id="${books[i].id}" class="card book" style="width: 18rem;">
+        `<div id="${books[i].id}" class="card m-4" style="width: 18rem;">
             <img class="card-img-top" src="${books[i].image}" alt="${books[i].title}">
                 <div class="card-body">
                     <h5 class="card-title">${books[i].title}</h5>
