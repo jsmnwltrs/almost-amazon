@@ -1,5 +1,5 @@
 import {printToDom} from "../helpers/util.js"
-import {cartBuilder} from "../components/cart.js"
+import {buildCartArray} from "../components/cart.js"
 
 const books = [
     {
@@ -25,10 +25,11 @@ const books = [
     }
 ]
 
+
 const cartClick = (e) => {
     const bookId = e.target.closest('.card').id;
     const currentBook = books.find(x => x.id === bookId);
-    cartBuilder(currentBook);
+    buildCartArray(currentBook);
 };
 
 
