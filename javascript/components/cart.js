@@ -39,7 +39,7 @@ const cartBuilder = () => {
         <img class="card-img-top" src="${cartArray[i].image}" alt="${cartArray[i].title}">
         <div class="card-body">
             <h5 class="card-title">${cartArray[i].title}</h5>
-            <p class="card-text font-weight-bold">Price: ${cartArray[i].price}</p>
+            <p class="card-text font-weight-bold">Price: $${cartArray[i].price}</p>
         </div>
     </div>`;
     };

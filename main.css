@@ -5,3 +5,8 @@ body {
 #cart {
     border: 4px solid black;
 }
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
