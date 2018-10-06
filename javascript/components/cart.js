@@ -8,24 +8,28 @@ const buildCartArray = (newBookObject) => {
   cartBuilder();
 }
 
+const setInitialDisplay = () => { 
+    printToDom(0, 'price')
+}
 
-const removeCartElement = (currentBook) => {
-    const bookIndex = cartArray.findIndex(currentBook);
-    cartArray.splice(bookIndex, 1);
-    cartBuilder();
-  }
+const setPriceDisplay = (num) => {
+    printToDom(num, 'price');
+}
 
-const removeClick = (e) => {
-    const bookId = e.target.closest('.card').id;
-    const currentBook = cartArray.find(x => x.id === bookId);
-    removeCartElement(currentBook);
-};
-
-const removeButton = () => {
-    const removeButtons = document.getElementsByClassName('remove');
-    for (let i = 0; i < removeButtons.length; i++){
-    removeButtons[i].addEventListener('click', removeClick);
-}};
+const getPrice = () => {
+    let currentPrice = document.getElementById("price").innerHTML;
+    let priceNumber = "";
+    let currentPriceNumber = "";
+    let price = "";
+    let result = "";
+    cartArray.forEach((array)=> {
+        price = array.price;
+        priceNumber = parseFloat(price);
+        currentPriceNumber = parseFloat(currentPrice);
+        result = currentPriceNumber + priceNumber;
+    })
+    setPriceDisplay(result);
+}
 
 const cartBuilder = () => {
     let cartString = '';
@@ -36,12 +40,11 @@ const cartBuilder = () => {
         <div class="card-body">
             <h5 class="card-title">${cartArray[i].title}</h5>
             <p class="card-text font-weight-bold">Price: ${cartArray[i].price}</p>
-            <a href="#" class="remove btn btn-primary">Remove</a>
         </div>
     </div>`;
     };
     printToDom(cartString, 'cart');
-    removeButton();
+    getPrice();
 };
 
-export {buildCartArray};
+export {buildCartArray, setInitialDisplay};
